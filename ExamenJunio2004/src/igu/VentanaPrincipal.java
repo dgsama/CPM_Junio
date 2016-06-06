@@ -7,14 +7,27 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import javax.swing.JMenuBar;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import java.awt.Font;
+import javax.swing.border.BevelBorder;
+import javax.swing.JTextArea;
+import java.awt.Color;
+import javax.swing.UIManager;
+import javax.swing.border.TitledBorder;
+import javax.swing.JList;
 
 public class VentanaPrincipal extends JFrame {
 
 	private JPanel contentPane;
+	private JPanel panel;
 
 	/**
 	 * Launch the application.
@@ -36,11 +49,9 @@ public class VentanaPrincipal extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaPrincipal() {
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 641, 473);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		getContentPane().add(getPanel(), BorderLayout.CENTER);
 	}
 }
