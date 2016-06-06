@@ -52,6 +52,5 @@ public class VentanaPrincipal extends JFrame {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 641, 473);
-		getContentPane().add(getPanel(), BorderLayout.CENTER);
 	}
 }
