@@ -51,6 +51,6 @@ public class VentanaPrincipal extends JFrame {
 	public VentanaPrincipal() {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 641, 473);
+		setBounds(100, 100, 600, 473);
 	}
 }
