@@ -6,13 +6,13 @@ public class Travel {
 
 	private String destination;
 	private String info;
-	private int duration;
+	private String duration;
 	private float adultPrice;
 	private float childPrice;
-	private Date departureDate;
+	private String departureDate;
 
-	public Travel(String destination, String description, int duration, float adultPrice, float childPrice,
-			Date departureDate) {
+	public Travel(String destination, String description, String duration, float adultPrice, float childPrice,
+			String departureDate) {
 		this.destination = destination;
 		this.info = description;
 		this.duration = duration;
@@ -39,11 +39,11 @@ public class Travel {
 		this.info = description;
 	}
 
-	public int getDuration() {
+	public String getDuration() {
 		return duration;
 	}
 
-	public void setDuration(int duration) {
+	public void setDuration(String duration) {
 		this.duration = duration;
 	}
 
@@ -63,12 +63,17 @@ public class Travel {
 		this.childPrice = childPrice;
 	}
 
-	public Date getDepartureDate() {
+	public String getDepartureDate() {
 		return departureDate;
 	}
 
-	public void setDepartureDate(Date departureDate) {
+	public void setDepartureDate(String departureDate) {
 		this.departureDate = departureDate;
+	}
+
+	@Override
+	public String toString() {
+		return "Travel [destination=" + destination + "]";
 	}
 
 }
