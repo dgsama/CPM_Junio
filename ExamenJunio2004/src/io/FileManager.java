@@ -1,5 +1,6 @@
 package io;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,10 +13,29 @@ public class FileManager {
 		this.file = file;
 	}
 
+	public String getFile() {
+		return file;
+	}
+
 	public List<Travel> getTrips() {
 		List<Travel> travels = new ArrayList<Travel>();
-		for (int i = 0; i < 10; i++) {
-			travels.add(new Travel("viaje", "assdaf", i + " dias", 20, 30, i + " Junio"));
+		String nombreFichero = getFile();
+		String line = "";
+		try {
+			BufferedReader f = new BufferedReader(new FileReader(nombreFichero));
+
+			while (f.ready()) {
+				line = f.readLine();
+				String[] l = line.split("@");
+				Travel aux = new Travel(l[0], l[1], l[2], Float.parseFloat(l[3]), Float.parseFloat(l[4]), l[5]);
+				travels.add(aux);
+
+			}
+			f.close();
+		} catch (FileNotFoundException fnfe) {
+			System.out.println("El archivo no se ha encontrado.");
+		} catch (IOException ioe) {
+			new RuntimeException("Error de entrada/salida.");
 		}
 		return travels;
 	}

@@ -21,6 +21,8 @@ import javax.swing.border.TitledBorder;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class MainWindow extends JFrame {
 
@@ -53,7 +55,7 @@ public class MainWindow extends JFrame {
 	 * Create the frame.
 	 */
 	public MainWindow() {
-		reader = new FileManager(null);
+		reader = new FileManager("viajes.dat");
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -81,6 +83,14 @@ public class MainWindow extends JFrame {
 	private JList getListViajes() {
 		if (listViajes == null) {
 			listViajes = new JList();
+			listViajes.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent arg0) {
+					if (listViajes.getSelectedValue() != null) {
+						txInfo.setText(listViajes.getSelectedValue().getDescription());
+					}
+				}
+			});
 			listViajes.setBorder(new TitledBorder(null, "TRAVELS", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			modeloViajes = new DefaultListModel<Travel>();
 
@@ -100,14 +110,15 @@ public class MainWindow extends JFrame {
 		}
 		return panel;
 	}
+
 	private JTextField getTxInfo() {
 		if (txInfo == null) {
 			txInfo = new JTextField();
 			txInfo.setColumns(10);
-			txInfo.setText(listViajes.getSelectedValue().getDescription());
 		}
 		return txInfo;
 	}
+
 	private JLabel getLblInfo() {
 		if (lblInfo == null) {
 			lblInfo = new JLabel("info:");
